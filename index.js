@@ -1,5 +1,6 @@
 const express = require('express');
 const usersRouter = require('./routes/users');
+const healthCheckRouter = require('./routes/healthCheck');
 const logger = require('morgan');
 require('dotenv').config();
 // console.log(process.env)
@@ -9,6 +10,7 @@ const API_PORT = Number(process.env.API_PORT) || 3000;
 const app = express();
 
 app.use(logger('dev'));
+app.use('/', healthCheckRouter);
 app.use('/users', usersRouter);
 
 app.listen({
