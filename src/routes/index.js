@@ -1,11 +1,12 @@
-const express = require("express");
-const router = express.Router();
-const usersRouter = require('./users');
-const healthCheckRouter = require('./healthCheck');
+import { Router } from 'express';
+import usersRouter from './users.js';
+import healthCheckRouter from './healthCheck.js';
 
 // function applyRoutes(app) {
-    router.use('/', healthCheckRouter);
-    router.use('/users', usersRouter);
+const router = Router();
+
+router.use('/', healthCheckRouter);
+router.use('/users', usersRouter);
 // }
 
-module.exports = router;
+export default router;

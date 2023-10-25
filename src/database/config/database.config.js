@@ -23,5 +23,5 @@ const config = {
         host: "127.0.0.1",
         dialect: "postgres"
     }
-}
-module.exports = config
+};
+export default config;

@@ -1,5 +1,5 @@
-const config = require("./config/database.config");
-const { Sequelize } = require('sequelize');
+import config from './config/database.config.js';
+import { Sequelize } from 'sequelize';
 
 /*
 // Option 1: Passing a connection URI
@@ -18,8 +18,8 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 });
 */
 
-const sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, {
+const db = new Sequelize(config.development.database, config.development.username, config.development.password, {
     ...config.development,
 });
 
-module.exports = sequelize;
+export default db;
