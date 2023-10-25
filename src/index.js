@@ -1,18 +1,15 @@
 const express = require('express');
-const usersRouter = require('./routes/users');
-const healthCheckRouter = require('./routes/healthCheck');
 const logger = require('morgan');
 const sequelize = require("./database");
+const router = require("./routes");
 require('dotenv').config();
-// console.log(process.env)
 
 const API_HOST = process.env.API_HOST;
 const API_PORT = Number(process.env.API_PORT) || 3000;
 const app = express();
 
 app.use(logger('dev'));
-app.use('/', healthCheckRouter);
-app.use('/users', usersRouter);
+app.use(router);
 
 const testConnectionDB = async () => {
 try {
@@ -22,6 +19,7 @@ try {
   console.error('Unable to connect to the database:', error);
 }}
 testConnectionDB()
+
 
 app.listen({
   host: API_HOST,
