@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    balance: DataTypes.INTEGER.UNSIGNED
+    balance: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',

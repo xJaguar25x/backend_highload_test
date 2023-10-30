@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       balance: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       createdAt: {
