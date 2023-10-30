@@ -20,7 +20,7 @@ export default function () {
             'Content-Type': 'application/json',
         },
     };
-    http.get(url, payload, params);
+    http.patch(url, payload, params);
     // http.get('http://localhost:3000/users');
     sleep(1);
 }

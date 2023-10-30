@@ -1,36 +1,19 @@
-import {Router} from 'express';
-import {getAllUsers, updateBalance} from "../controllers/usersController.js";
+import { Router } from 'express';
+import { getAllUsers, updateBalance } from "../controllers/usersController.js";
+import { checkBodyUsers, sleep } from "../middleware/index.js";
 
 const router = Router();
 
 /* GET users listing. */
-router.get('/',
-  async function (req, res, next) {
-      function test(next) {
-          return next();
-      }
-
-      setTimeout(
-        () => {
-            test(next)
-        }
-        , 5000);
-  },
-  async function (req, res, next) {
-      res.json(await getAllUsers());
-  });
+router.get('/', sleep, async function (req, res, next) {
+    res.json(await getAllUsers());
+});
 
 /* UPDATE users balance. */
-router.put('/', async function (req, res, next) {
-    const {userId: id, amount} = req.body;
-    console.log({id, amount})
-    if (!id || typeof id !== "number") {
-        return res.status(400).json({error: 'id field  is required and must be type number'});
-    }
-    if (!amount || typeof amount !== "number") {
-        return res.status(400).json({error: 'amount field  is required and must be type number'});
-    }
+router.patch('/', checkBodyUsers, async function (req, res, next) {
+    const { userId: id, amount } = req.body;
     const data = await updateBalance({id, amount});
+
     if (data.error) {
         return res.status(400).send(data);
     }
