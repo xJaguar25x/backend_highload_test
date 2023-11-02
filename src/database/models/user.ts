@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from "../connection";
 
 class User extends Model {
-  declare id: number; //for more information, see https://sequelize.org/docs/v6/core-concepts/model-basics/#extending-model
+  declare id: number;
   public balance!: number;
 }
 

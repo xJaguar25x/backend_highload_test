@@ -5,12 +5,9 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "start:ts": "ts-node src/index.ts -respawn --transpile-only --watch --rs",
-    "migrate": "./node_modules/.bin/sequelize db:migrate",
-    "migrate:create": "./node_modules/.bin/sequelize migration:create --name create-table-users",
-    "migrate:down": "./node_modules/.bin/sequelize db:migrate:undo",
     "db:create": "./node_modules/.bin/sequelize db:create",
-    "db_prepare": "npm run db:create & npm run migrate & npm run db:seed:all",
-    "db:seed:all": "npx sequelize-cli db:seed:all"
+    "db:seed:all": "npx sequelize-cli db:seed:all",
+    "db_prepare": "npm run db:create & npm run migrate & npm run db:seed:all"
   },
   "dependencies": {
     "axios": "^1.5.1",

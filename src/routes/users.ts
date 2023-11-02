@@ -6,8 +6,7 @@ const router = Router();
 
 /* GET users listing. */
 router.get('/', sleep, async function (req: Request, res: Response, next: NextFunction) {
-    // res.json(await getAllUsers());
-    res.json("true")
+    res.json(await getAllUsers());
 });
 
 /* UPDATE users balance. */

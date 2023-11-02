@@ -1,6 +1,5 @@
 import User from "../database/models/user";
 import { sequelize } from "../database/connection";
-import { RPS } from "../routes";
 
 interface IGetAllUsers {
   id: number;
@@ -13,15 +12,14 @@ interface IUpdateBalance {
 }
 
 export async function getAllUsers(): Promise<Array<IGetAllUsers>> {
-  console.log({RPS1: ++RPS.number1})
   return await User.findAll({
     attributes: ['id', 'balance']
   });
 }
 
 export async function updateBalance({ id, amount }: { id: number, amount: number }): Promise<IUpdateBalance> {
-  console.log({RPS: ++RPS.number})
   const t = await sequelize.transaction();
+
   try {
     const user = await User.findOne({
       where: {
@@ -54,7 +52,7 @@ export async function updateBalance({ id, amount }: { id: number, amount: number
     return { result: !!res };
   } catch (e:any) {
     await t.rollback();
-    console.log({e})
+
     throw new Error(e)
   }
 }
