@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { getAllUsers, updateBalance } from "../controllers/usersController.js";
-import { checkBodyUsers, sleep } from "../middleware/index";
+import { getAllUsers, updateBalance } from "../controllers/usersController";
+import { checkBodyUsers, sleep } from "../middleware";
 
 const router = Router();
 

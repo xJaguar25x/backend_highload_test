@@ -1,12 +1,13 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
 
+const attempt = 300;
 export let options = {
    /* stages: [
         { duration: '5s', target: 10000},
     ],*/
-    vus: 10,
-    iterations: 10,
+    vus: attempt,
+    iterations: attempt,
 };
 
 export default function () {
