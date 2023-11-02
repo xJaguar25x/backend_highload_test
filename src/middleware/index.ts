@@ -1,4 +1,6 @@
-export const checkBodyUsers = async (req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+
+export const checkBodyUsers = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     const { userId: id, amount } = req.body;
 
     if (typeof id !== "number") {
@@ -11,13 +13,13 @@ export const checkBodyUsers = async (req, res, next) => {
     return next();
 }
 
-export const sleep = async function (req, res, next) {
-    function test(next) {
+export const sleep = async function (req: Request, res: Response, next: NextFunction): Promise<void> {
+    function test(next: NextFunction) {
         return next();
     }
 
     setTimeout(() => {
           test(next)
       }
-      , 5000);
+      , 50);
 }

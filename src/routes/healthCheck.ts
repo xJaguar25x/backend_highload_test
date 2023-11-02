@@ -1,8 +1,9 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
+
 const router = Router();
 
 /* GET health check listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req: Request, res: Response) {
     res.send('it`s works');
 });
 
